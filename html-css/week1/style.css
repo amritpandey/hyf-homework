@@ -1,0 +1,135 @@
+body{
+    margin: 0 10% 0 10%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1em; 
+}
+h1{
+    color:white;
+    font-size: 3em;
+    font-weight: bolder;
+    font-family: 'Gluten', cursive;
+}
+
+h3{
+    background-color: rgb(236, 144, 111);  
+}
+h4{
+    font-family: 'Roboto Slab', serif;
+    font-weight:bolder;
+    font-size:1.2em ;
+    color: rgb(175, 77, 77);
+}
+
+img{
+    width: 175px;
+    border-radius: 50%;
+    margin-left: 45%;
+    padding: 20px;
+}
+header{
+    background-color: rgb(145, 162, 179);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;  
+}
+main{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    /*grid-column-gap: 1.5em;*/
+}
+hr{
+    border: dotted #788181 6px;
+    border-bottom: none;
+    width: 50%;
+    margin:0px;
+}
+
+ .role{
+    color: rgb(226, 228, 151);
+    font-family: 'Lobster Two', cursive; 
+    font-size: 1.5em; 
+    
+}
+.first-column{
+    background-color: rgb(182, 169, 169);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.second-column{
+    border-style: outset;
+    padding:0 20px 0 30px;
+}
+.second-column > h3{
+    background-color: white;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /*grid-gap: 1em;*/
+}
+.wrapper > div{
+    background-color: #eee;
+    padding: 5px;
+}
+
+ul.contact{
+    list-style-type: none;
+    margin:0px;
+    padding: 5px;
+    border-style: ridge;
+    
+}
+.profile > p, .contact{
+        color:white;
+    line-height: 1.5em;
+    font-weight: bolder;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+ul.task{
+    text-decoration: darkmagenta;
+    font-style: italic;
+}
+.profile >p::first-line{
+    color: crimson;
+}
+.google:hover::after{
+    
+    content: " www.google.com";
+    color: rgb(107, 121, 243);
+    font-style: italic;
+}
+.wrapper.lang div:nth-child(even){
+    color: goldenrod;
+}
+
+
+@media screen and (max-width: 600px) {
+    header, main, .wrapper {
+        grid-template-columns: 100%;
+        /*padding: 5px;*/
+    }
+    .wrapper.lang{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    img{
+     margin-left: 10%;   
+    }
+    h1{
+        font-size: 2em;
+        margin-left: 10%;
+    }
+    .role{
+        font-size: 1em;
+        color: blueviolet;
+        margin-left: 15%;
+    }
+    .profile >p{
+        color: rgb(212, 241, 82);
+    }
+  }
+
+
+
+
+
