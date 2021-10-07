@@ -105,6 +105,10 @@ section.navigation li:nth-child(3){
     height: 150px;
     width:150px;
 }
+.google-map{
+    width: 150px;
+    height: 150px;
+}
 /* footer ends here */
 
 /* Responsive layout */
