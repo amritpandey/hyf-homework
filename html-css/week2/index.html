@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <section class="top-header">
+            <h1>WEB DEVELOPMENT AS AN INDUSTRY</h1>
+            <p>an article about web development</p>
+        </section>
+                <nav>
+                    <ul>
+                        <li>home</li>
+                        <li>about</li>
+                        <li>our services</li>
+                        <li>our office</li>
+                    </ul>
+                </nav>
+        <img class="main-background-image" src="https://images.adsttc.com/media/images/5c49/0ff8/284d/d13e/b300/00ad/newsletter/INT_Livingroom1.jpg?1548292079" alt="office-image" alt="our-office-image"> 
+    </header>
+    <main>
+            <section class="main-section-item">
+                <h4>WEB DEVELOPMENT AS AN INDUSTRY</h4>
+                <p>Lorem ipsum dolor sit amet consecte, adipisicing elit. Consequuntur hic atque quia, rerum numquam aliquid.
+                </p>
+            </section>
+            <section>
+                <h3>PRACTICAL WEB DEVELOPMENT</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid id perferendis at recusandae consequatur quaerat qui laboriosam assumenda voluptate rerum tempora ad, laudantium consequuntur suscipit expedita culpa doloribus libero aspernatur iste illo! Odit nostrum omnis iste, eos magni tempore voluptatem, voluptate accusantium aspernatur expedita maxime nisi quis quam voluptates. Numquam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit aliquam delectus inventore, non modi in? Id molestias facere eum minima at dolorem dolore, unde molestiae expedita officia dignissimos doloremque sunt?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eligendi accusantium repellendus. Tempora vitae commodi facere mollitia quo, officiis vel aliquam quos ullam dolorem voluptas natus dolore voluptate nemo aperiam optio vero saepe similique enim expedita earum ea. Facilis numquam incidunt eius repellendus aliquam tempora est perspiciatis, doloribus facere pariatur.</p>
+            </section>
+            <section>
+                <h4>THE GALLERY</h4>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, nesciunt!</p>
+            </section>
+            <section class="logotypes">
+                <h3>LOGOTYPES ON THE WEB</h3>
+                <section class="inner-logoitems">
+                    <div><img src="logos/1.png" alt="github-logo"></div>  
+                    <div><img src="logos/2.png" alt="safari-browser-logo"> </div>
+                    <div><img src="logos/3.png" alt="world wide web logo"></div>
+                    <div><img src="logos/4.png" alt="ie"></div>
+                    <div><img src="logos/5google.png" alt="ie"></div>
+                    <div><img src="logos/6chitchat.png" alt="ie"></div>
+                    <div><img src="logos/7ask.png" alt="ie"></div>
+                    <div><img src="logos/8scompany.png" alt="ie"></div>
+                    <div><img src="logos/9apple.png" alt="ie"></div>
+                    <div><img src="logos/10monkey.png" alt="ie"></div>
+                    <div><img src="logos/11dropbox.png" alt="ie"></div>
+                    <div><img src="logos/12v.png" alt="ie"></div>
+                </section>
+            </section>
+    </main>
+    <footer>
+        <section class="find-us">
+            <h5>FIND US</h5>
+            <div id="map"></div>
+            <p>Hack your future</p>
+            <p>Copenhagen</p>
+            <p> M-TH 7am-4pm</p> 
+            <p>Fri-Sat 9am-7pm</p> 
+        </section>
+        <section class="about-the-page">
+            <h5>ABOUT THIS PAGE</h5>
+            <P>This is the footer of the page for homework 02</P>
+        </section>
+        <section class="archives">
+            <h5>ARCHIVES</h5>
+            <ul>
+                <li>March 2016</li>
+                <li>April 2016</li>
+                <li>May 2016</li>
+            </ul>
+        </section>
+        <section class="navigation">
+            <h5>NAVIGATION</h5>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>History</li>
+                <li>Contact</li>
+                <li>Blog</li>
+            </ul>
+        </section>
+    </footer>
+    <script>
+        function initMap(){
+            var loaction={lat:55.673596 , lng:12.569593};
+            var map=new google.maps.Map(document.getElementById("map"),{
+        zoom:4,
+        center:location});
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initMap">
+    </script>
+</body>
+</html>
