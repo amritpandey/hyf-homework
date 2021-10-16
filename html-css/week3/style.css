@@ -1,0 +1,216 @@
+body{
+    width: 95%;
+    max-width: 980px;
+    margin: 1em auto;
+    font-size: 1.5rem;
+}
+
+/* header with navigation bar*/
+.top-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: antiquewhite;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+}
+nav ul li{
+    list-style: none;
+    margin-right: 1em;
+}
+progress{
+    width: 94%;
+    padding: 1rem;
+    box-sizing:content-box;
+}
+.progress-bar{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    /*line-height: 0%;*/
+    margin-bottom: 2em;
+    padding:1em;
+}
+.progress-bar p:nth-last-child(1){
+    font-size: 1.25rem;
+    font-weight: 400;
+    opacity: 0.75;
+}
+
+section.top6{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+label{
+    width: 200px;
+    display:inline-block;
+    text-align: right;
+    font-weight: bold;
+}
+button{
+    background-color: rgb(64, 128, 128);
+    font-size: 1.75rem;
+    padding: 25px 50px ;
+}
+input, select{
+    height: 40px; 
+    font-size: 20px;;
+}
+select{
+    width: 40%;
+}
+section > div {
+    flex: 40%;
+    margin:10px;
+}
+.image-checkbox > div {
+    flex: 20%;
+    margin:10px;
+}
+.profile-main{
+    display: flex;
+    margin-top: 5rem;
+}
+.profile-text>p{
+    font-size: 1rem;
+    font-style: italic;
+    text-align:center;
+}
+.checkbox-next, .newsletter-sign-up{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+.shipping-address{
+    width: 3em;
+    height: 2.5em;
+}
+.newsletter-sign-up >div >input,
+.first-column-step3 >div >input,
+.second-column-step3 >div >input,
+.image-checkbox >div >div >input{
+    width: 2.5em;
+    height: 2em;
+    text-align: center;
+}
+.weekly-news, .monthly-news, .no-news, 
+.first-column-step3 >div, 
+.second-column-step3 >div,
+.checkbox-next >div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.no-news >label{
+    width: 15rem;
+}
+.button {
+    text-decoration : none;
+    font-size: 1.75rem;
+    padding: 25px 50px ;
+    background-color: rgb(64, 128, 128);
+    color: black;  
+}
+/* second page*/
+section.step2, .various-accessories{
+    display: flex;
+    flex-direction: row;
+    background-color: yellowgreen;
+}
+.first-column{
+    display: flex;
+    flex-direction: column;
+}
+
+/* third page*/
+.various-accessories{
+    width:60%;
+}
+.image-checkbox{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+}
+.image-checkbox >div{
+    width: 21%;
+}
+
+.image-container{
+    display:flex;
+    flex-direction:column;
+  }
+  .image-container img{
+    width:200px;
+    height:200px;
+  }
+  .image-label{
+    max-width:200px;
+    text-align:right;
+    display: flex;
+  }
+
+  @media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+     /* max-width: 580px;*/
+      margin: 1em auto;
+      font-size: 1rem;
+    }
+    progress{
+        width: 90%;
+        padding: 1.5rem;
+        /*box-sizing:content-box;*/
+    }
+  
+    .progress-bar p:nth-last-child(1){
+        font-size: 1rem;
+        font-weight: 200;
+        opacity: 0.75;
+    }
+    .main-info > p{
+        width: 90%;
+        opacity: 0.75;
+        text-align: justify;
+    }
+   
+    #profile-desc{
+        width: 250px;
+        height: 150px;
+    }
+    
+    .profile-main{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+    select{
+        width: 100%;
+    }
+    .top6{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    button{
+        background-color: rgb(64, 128, 128);
+        font-size: 1.5rem;
+        padding: 15px 25px ;
+    }
+    section.step2, .various-accessories, .newsletter-sign-up{
+        flex-wrap: wrap; 
+    }
+    .button {
+        font-size: 1.50rem;
+        padding: 15px 25px ;
+    }
+   
+    .image-checkbox >div{
+        width: 100%; 
+    }
+   
+  }
