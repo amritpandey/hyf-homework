@@ -1,1 +1,2 @@
 this is my first git in apples
+this is more text to apple file.
