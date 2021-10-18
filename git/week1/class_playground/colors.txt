@@ -1,0 +1,6 @@
+purple
+green
+red
+yellow
+blue
+skyblue
