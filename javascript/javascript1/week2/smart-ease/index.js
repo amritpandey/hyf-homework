@@ -101,6 +101,7 @@ console.log(getFullname1("John", "Lenon", true)); */
 
 function getNumberOfStudents() {
   // You write code here
+  return 
 } 
 console.log(addStudentToClass("ram"));
 
