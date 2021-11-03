@@ -2,7 +2,6 @@
 
 const candyTypes = [["Sweet",0.5],["Chocolate",0.7],["Toffee",1.1],["Chewing-gum",0.03]];
 const boughtCandyPrices =[];
-const amountToSpend = Math.random()*100;//gives 0 to 99 random number
 
 function addCandy(candyType, weight){
     //find candy price for any candy type
@@ -25,6 +24,8 @@ addCandy("Sweet",20);
 addCandy("Toffee",20);
 console.log(boughtCandyPrices);
 
+
+const amountToSpend = Math.random()*100;//gives 0 to 99 random number
 
 function canBuyMoreCandy(piecesOfCandy){
     
