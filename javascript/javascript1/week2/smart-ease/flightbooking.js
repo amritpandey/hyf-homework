@@ -3,6 +3,9 @@
 function getFullname2(firstname, surname, useFormalName, gender){
     
     let fullname = firstname + " " + surname;
+    if(firstname==="" || surname===""){
+      return "firstname and surname cant be empty";
+    }
     switch(gender) {
         case "male":
           useFormalName? fullname= "Lord " + fullname:fullname;
@@ -12,4 +15,5 @@ function getFullname2(firstname, surname, useFormalName, gender){
       }
       return fullname;
 }
-console.log(getFullname2("","",true,"male"));
+console.log(getFullname2("chunmei","",false,"female"));
+
