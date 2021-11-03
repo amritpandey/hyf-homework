@@ -10,4 +10,4 @@
         return day;
     }
         
-    console.log(getEventWeekday(3)); 
+    console.log(getEventWeekday(13)); 
