@@ -38,6 +38,29 @@ const names = [
 }
 
   // Code done
-  console.log(names);
-  // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
+  console.log(names);  // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
    
+ 
+  /* When will we be there?? */
+
+  //write a function where you provide speed and distance in km
+
+  function specifySpeed(speed, distance){
+    const totalTime = distance/speed;
+    const timeInMinutes = totalTime*60;
+    const hours = Math.floor(timeInMinutes/60);
+    const minutes = Math.floor(timeInMinutes % 60);
+
+    /* const totalTimeToSplit = totalTime.toString().split(".");
+    const onlyMinutes = (totalTimeToSplit[1]/100)*60; */
+
+    //function should return the time
+    return `${hours} hours and ${minutes} minutes` ;
+
+  }
+
+  console.log(specifySpeed(40,239));
+  
+  //format of time like this 3 hours and 34 minutes
+
+ 
