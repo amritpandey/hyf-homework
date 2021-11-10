@@ -63,4 +63,53 @@ const names = [
   
   //format of time like this 3 hours and 34 minutes
 
+  /** Series duration of my life */
+  const seriesDurations = [
+    {
+      title: "Game of thrones",
+      days: 3,
+      hours: 1,
+      minutes: 0,
+    },
+    {
+      title: "Sopranos",
+      days: 3,
+      hours: 14,
+      minutes: 0,
+    },
+    {
+      title: "The Wire",
+      days: 2,
+      hours: 12,
+      minutes: 0,
+    },
+  ];
+
+  const lifespanInHours = 80*365*24;//Assuming 80 years of life expectancy and converting into hours
+  let totalPercentage = 0;
+
+  function calculateLifespanPercentage(){
+    for (let i = 0; i < seriesDurations.length; i++) {
+    percentageValue = ((seriesDurations[i].days*24) + seriesDurations[i].hours)*100/lifespanInHours;
+    
+    /* if(i===0){
+      console.log(`${seriesDurations[0].title} took ${percentageValue.toFixed(3)}% of my life` );
+    }
+    if(i===1){
+      console.log(`${seriesDurations[1].title} took ${percentageValue.toFixed(3)}% of my life` );
+    }
+    if(i===2){
+      console.log(`${seriesDurations[2].title} took ${percentageValue.toFixed(3)}% of my life` );
+    } */
+    totalPercentage +=percentageValue;
+    }  
  
+    console.log(`In total that is ${totalPercentage.toFixed(3)}% of my life`);
+  }
+ /*
+  
+   for (const item of seriesDurations) {
+    percentageValue = (item.days*24 + item.hours)*100/lifespanInHours;
+   }      
+    */
+  console.log(calculateLifespanPercentage()); 
