@@ -37,7 +37,6 @@ const names = [
     }
 }
 
-  // Code done
   console.log(names);  // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
    
  
@@ -45,25 +44,23 @@ const names = [
    * When will we be there??
    **/ 
 
-  //write a function where you provide speed and distance in km
 
-  function specifySpeed(speed, distance){
-    const totalTime = distance/speed;
+  const travelInformation = {
+    speed: 50,
+    destinationDistance: 432,
+  };
+  
+  function calculateDuration(){
+    const totalTime = travelInformation.destinationDistance/travelInformation.speed;
     const timeInMinutes = totalTime*60;
     const hours = Math.floor(timeInMinutes/60);
     const minutes = Math.floor(timeInMinutes % 60);
 
-    /* const totalTimeToSplit = totalTime.toString().split(".");
-    const onlyMinutes = (totalTimeToSplit[1]/100)*60; */
-
-    //function should return the time
     return `${hours} hours and ${minutes} minutes` ;
-
   }
-
-  console.log(specifySpeed(45,229));
   
-  //format of time like this 3 hours and 34 minutes
+  console.log(calculateDuration());
+
 
   /** Series duration of my life */
   const seriesDurations = [
@@ -139,14 +136,10 @@ const names = [
 
   // function to log out notes
   function logOutNotesFormatted() {
-    // your code here
-     for (const note of notes) {
+
+    for (const note of notes) {
       console.log(`The note with id: ${note.id}, has the following note text: ${note.content}`);
     } 
- /*  for (let index = 0; index < notes.length; index++) {
-    console.log(`The note with id: ${notes[index].id}, has the following note text: ${notes[index].content}`);
-
-  } */
   }
   
   console.log(logOutNotesFormatted());
@@ -155,7 +148,7 @@ const names = [
   function updateContentOfNote(id, content){
     for (const note of notes) {
       if(note.id===id){
-        note.content=content;// need to ask here, now solved
+        note.content=content;
       }
     }
   }
@@ -172,7 +165,7 @@ const names = [
   function addActivity(date, activity, duration){
    /*  if(typeof date==="string" && typeof activity==="string"&& typeof duration ==="number"){
       return "Error, supplied wrong arguments";
-    }  */
+    }  */// here i tried to check parameters datatype but not working yet
 
     let obj1 = {
       "date":date,
