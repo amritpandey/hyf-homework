@@ -10,7 +10,7 @@ const names = [
     "katrine",
     "Tala",
   ];
-  const nameToRemove = "Ahmad";
+  const nameToRemove = "Samuel";
 
   //write code here
   // first method removing name using push() and new empty array 
@@ -41,7 +41,9 @@ const names = [
   console.log(names);  // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'katrine', 'Tala']
    
  
-  /* When will we be there?? */
+  /**
+   * When will we be there??
+   **/ 
 
   //write a function where you provide speed and distance in km
 
@@ -59,7 +61,7 @@ const names = [
 
   }
 
-  console.log(specifySpeed(40,239));
+  console.log(specifySpeed(45,229));
   
   //format of time like this 3 hours and 34 minutes
 
@@ -90,18 +92,11 @@ const names = [
 
   function calculateLifespanPercentage(){
     for (let i = 0; i < seriesDurations.length; i++) {
-    percentageValue = ((seriesDurations[i].days*24) + seriesDurations[i].hours)*100/lifespanInHours;
     
-    if(i===0){
-      console.log(`${seriesDurations[0].title} took ${percentageValue.toFixed(3)}% of my life` );
-    }
-    if(i===1){
-      console.log(`${seriesDurations[1].title} took ${percentageValue.toFixed(3)}% of my life` );
-    }
-    if(i===2){
-      console.log(`${seriesDurations[2].title} took ${percentageValue.toFixed(3)}% of my life` );
-    }
-    totalPercentage +=percentageValue;
+      percentageValue = ((seriesDurations[i].days*24) + seriesDurations[i].hours)*100/lifespanInHours;
+      console.log(`${seriesDurations[i].title} took ${percentageValue.toFixed(3)}% of my life` );//tofixed return string not a number
+
+      totalPercentage +=percentageValue;
     }  
  
     console.log(`In total that is ${totalPercentage.toFixed(3)}% of my life`);
@@ -156,15 +151,16 @@ const names = [
   
   console.log(logOutNotesFormatted());
 
+  //function to change your note
   function updateContentOfNote(id, content){
     for (const note of notes) {
       if(note.id===id){
-        note.content="hello";
+        note.content=content;// need to ask here, now solved
       }
     }
   }
-  const firstUpdate = updateContentOfNote(3, "Dont cook food, i will buy");
-  console.log(firstUpdate);
+  updateContentOfNote(3, "Dont cook food, i will buy today");
+  console.log(notes);
 
 
   /**
@@ -172,24 +168,41 @@ const names = [
    */
 
   const activities=[];
+
   function addActivity(date, activity, duration){
+   /*  if(typeof date==="string" && typeof activity==="string"&& typeof duration ==="number"){
+      return "Error, supplied wrong arguments";
+    }  */
+
     let obj1 = {
-      date:date,
-      activity:activity,
+      "date":date,
+      "activity":activity,
       duration:duration
     };
     activities.push(obj1);
   }
 
-  //addActivity("23/7-18", "Youtube", 30);
+  addActivity("23/7-18", "Youtube", 30);
+  addActivity("25/7-18", "Youjz", 23);
+  addActivity("25/8-18", "Youjz", 5);
+
   console.log(activities);
 
-  function showStatus(activities){
-    if(activities===""){
+  function showStatus(){//global activities is not visible now if i use activities as parameter here
+    let totalDuration = 0;
+    const limit = 100;
+    if(activities.length===0){
       console.log("Add some activities before calling showStatus");
     }else{
-      console.log("You have added 3 activities. They amount to 78 min. of usage");
+      for (const activity of activities) {
+        totalDuration += activity.duration;
+      }
+      if(totalDuration<limit){
+      console.log(`You have added ${activities.length} activities. They amount to ${totalDuration} min. of usage`);
+    }else{
+      console.log("You have reached your limit, no more smartphoning for you!");
+    }
     }
   }
 
-  showStatus(activities);
+  showStatus(activities);//how activities passed here matters, elaborate it
