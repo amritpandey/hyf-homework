@@ -1,7 +1,7 @@
 /**
  * voice assistant project
  */
-let getName = '';
+const getName = [];
 const todo = [];
 const operators = ['+', '-', '*', '/'];
 
@@ -10,15 +10,17 @@ function getReply(command) {
 
     //Hello my name is Benjamin
     if (command === '') {
-        return 'Please give your command';
+        return 'Please give a command';
     }
-    if (command.includes('my name is')) {
+
+    if (command.includes('my name is') && getName.length === 0) {
         const givenName = words[words.length - 1];
-        getName = givenName;
+        getName.push(givenName);
         return `Nice to meet you ${getName}`;
     }
+
     // what is my name
-    if (command.includes('is my name') && getName !== '') {
+    if (command.includes('is my name') && getName.length !== 0) {
         return `Your name is ${getName}`;
     }
 
@@ -27,6 +29,8 @@ function getReply(command) {
         todo.push(words[1]);
         return 'fishing added to your todo';
     }
+
+    //Add singing in the shower
     if (command.includes('Add singing in the shower')) {
         const itemToAdd = command.substring(4, 25);
         todo.push(itemToAdd);
@@ -43,12 +47,12 @@ function getReply(command) {
 
     // what is on my todo
     if (command.match(/what is on/gi) && todo.length !== 0) {
-        console.log('Following task are listed in todo list :');
-        for (let i = 0; i < todo.length; i++) {
+        //console.log('Following task are listed in todo list :');
+        /*  for (let i = 0; i < todo.length; i++) {
             let todoList = `${[i + 1]}. ${todo[i]}`;
-            console.log(todoList);
-        }
-        //return `1. ${todo[0]} 2. ${todo[1]}`;
+            return todoList;
+        } */
+        return `You have (${todo} ) in your todo list`;
     }
 
     // What day is it today
@@ -84,13 +88,13 @@ function getReply(command) {
                 switch (word) {
                     case '+':
                         const sum = firstNumber + secondNumber;
-                        return sum;
+                        return `Sum of ${firstNumber} + ${secondNumber} = ${sum}`;
                     case '-':
                         const sub = firstNumber - secondNumber;
                         return sub;
                     case '*':
                         const mul = firstNumber * secondNumber;
-                        return mul;
+                        return `Multiplication of ${firstNumber} * ${secondNumber} = ${mul}`;
                     case '/':
                         const div = firstNumber / secondNumber;
                         return div;
@@ -102,13 +106,13 @@ function getReply(command) {
     }
 
     //set timer for 4 minutes
-    if (command.includes('Set a timer')) {
+    if (command.match(/set a timer/gi)) {
         const totalMinutes = command.match(/\d+/g);
         const totalInMilliseconds = totalMinutes[0] * 60 * 1000;
-        console.log(`Timer set for ${totalMinutes} minute(s)`);
         setTimeout(function () {
             console.log('Timer done');
         }, totalInMilliseconds);
+        console.log(`Timer set for ${totalMinutes} minute(s)`);
     }
 }
 
