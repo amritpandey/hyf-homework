@@ -3,8 +3,6 @@ console.log("Script loaded");
 const products = getAvailableProducts();
 console.log(products);
 
-//const products = getAvailableProducts();
-
 function renderProducts(products) {
   // your code here
   const allProducts1 = document.querySelector('ul');
