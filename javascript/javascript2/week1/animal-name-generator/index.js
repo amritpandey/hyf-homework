@@ -15,21 +15,17 @@ let randomNumber = Math.floor(Math.random() * spiritAnimalNames.length);
 
 const myNewButton = document.querySelector('#myButton');
 
-function clickFunction() {
     myNewButton.addEventListener('click', function () {
         if (document.querySelector('#click').checked) {
             getUsernameWithSpirit();
         }
     });
-}
 
-function hoverFunction() {
     myNewButton.addEventListener('mouseover', function () {
         if (document.querySelector('#hover').checked) {
             getUsernameWithSpirit();
         }
     });
-}
 
 function getUsernameWithSpirit() {
     const val = document.querySelector('#user-name').value;
@@ -41,5 +37,4 @@ function getUsernameWithSpirit() {
     }
 }
 
-clickFunction();
-hoverFunction();
+
