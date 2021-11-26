@@ -11,7 +11,6 @@ const spiritAnimalNames = [
 ];
 
 //getting random numbers from spiritAnimalNames
-let randomNumber = Math.floor(Math.random() * spiritAnimalNames.length);
 
 const myNewButton = document.querySelector('#myButton');
 
@@ -28,6 +27,7 @@ const myNewButton = document.querySelector('#myButton');
     });
 
 function getUsernameWithSpirit() {
+  let randomNumber = Math.floor(Math.random() * spiritAnimalNames.length);
     const val = document.querySelector('#user-name').value;
     if (val) {
         const output = `${val} - ${spiritAnimalNames[randomNumber]}`;
