@@ -110,7 +110,7 @@ runAfterDelay(8,add)
 // 8. Check if we have double clicked on the page
 
 setTimeout(() => {
-  window.addEventListener('dblclick',(e)=>console.log("double click !!!"));
+  document.addEventListener('dblclick',(e)=>console.log("double click !!!"));
 }, 500);
 
 
@@ -121,14 +121,6 @@ function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke){
 
 const logFunnyJoke=()=>console.log("funny bunny")
 const logBadJoke=()=>console.log("Good Bad and ugly")
-
-/* function logFunnyJoke(){
-console.log("funny bunny");
-}
-
-function logBadJoke(){
-console.log("Bad ugly and ugly");
-} */
 
 jokeCreator(false,logFunnyJoke,logBadJoke)
 
@@ -172,4 +164,8 @@ function fnObj(){
 }
 
 obj1.key()
+console.log(addition2(5,7));
+
+
+
 
