@@ -3,20 +3,27 @@ const btnClicked = document.querySelector('#btnStart');
 const inputSeconds = document.querySelector('#setSeconds');
 
 const msgDisplay = document.querySelector('#message-display');
-var confettiElement = document.querySelector('#press-s');
-console.log(confettiElement);
 
+const totalS = document.querySelector('#totalS');
+const totalL = document.querySelector('#totalL');
+
+inputSeconds.addEventListener('focus', () => (msgDisplay.innerHTML = ''));
 // when button is clicked
 btnClicked.addEventListener('click', () => {
     const userProvidedTime = inputSeconds.value;
     if (userProvidedTime !== '') {
+
+        msgDisplay.innerHTML = '';
+        totalL.innerHTML = '';
+        totalS.innerHTML = '';
+        
         setTimeout(() => {
             selectWinner();
         }, userProvidedTime * 1000);
 
         let countS = 0;
         let countL = 0;
-        let winner;
+
         function selectWinner() {
             if (countS === 0 && countL === 0) {
                 msgDisplay.textContent = 'No keys are pressed ';
@@ -33,9 +40,6 @@ btnClicked.addEventListener('click', () => {
 
             document.removeEventListener('keypress', logKeyValue);
         }
-
-        const totalS = document.querySelector('#totalS');
-        const totalL = document.querySelector('#totalL');
 
         // when key is pressed to play the game
         document.addEventListener('keypress', logKeyValue);
