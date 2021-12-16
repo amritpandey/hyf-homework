@@ -7,6 +7,7 @@ body {
     background-image: url(https://source.unsplash.com/1600x900/?landscape);
     height: 100vh;
     font-family: 'Prompt', sans-serif;
+    flex-direction: column;
 }
 .card {
     padding: 2em;
@@ -62,7 +63,7 @@ input.search-bar {
 }
 #currentPosition {
     background: #7c7c7c2b;
-    color: red;
+    color: blue;
     border: none;
     outline: none;
     cursor: pointer;
@@ -73,4 +74,7 @@ input.search-bar {
     font-family: fantasy;
     font-size: 150%;
     color: sienna;
+}
+#error-display {
+    color: red;
 }
