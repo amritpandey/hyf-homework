@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Fastest Presser Game</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <main>
+            <section class="top-section">
+                <div class="title-image">
+                    <h2>Fastest Presser</h2>
+                    <img
+                        src="pressingKeywords.gif"
+                        alt="keyword pressing cartoon image"
+                        width="250"
+                        height="150"
+                    />
+                </div>
+                <div class="hide">
+                    Let's play together who can press more within a agreed time.
+                </div>
+                <div id="message-display"></div>
+                <div class="set-start">
+                    <input
+                        type="number"
+                        id="setSeconds"
+                        placeholder="Set Seconds"
+                    />
+                    <div class="start-restart">
+                        <button id="btnStart">Start Game!</button>
+                        <button id="btnRestart">Restart Game</button>
+                    </div>
+                </div>
+            </section>
+            <section class="press-sl">
+                <div id="press-s">
+                    <h3>Press S</h3>
+                    <p id="totalS"></p>
+                </div>
+                <div>
+                    <h3>Press L</h3>
+                    <p id="totalL"></p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>© amrit pandey ＠ 2021</p>
+        </footer>
+        <script src="presser.js"></script>
+    </body>
+</html>
