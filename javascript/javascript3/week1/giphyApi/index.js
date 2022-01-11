@@ -49,6 +49,7 @@ function displayGiphyImages(webApi) {
 
                 const x = document.createElement('img'); //creating img element to hold the image
                 x.setAttribute('src', `${imgUrl}`);
+                x.classList.add("my-giphy-image");
                 x.setAttribute('height', 300);
                 x.setAttribute('width', 400);
                 const div = document.createElement('div'); // create the div to put the image
