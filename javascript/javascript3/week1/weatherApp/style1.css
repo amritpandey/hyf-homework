@@ -62,7 +62,7 @@ input.search-bar {
 .weather > div {
     margin-top: 0.6em;
 }
-#currentPosition {
+.currentPosition {
     background: #7c7c7c2b;
     color: blue;
     border: none;
