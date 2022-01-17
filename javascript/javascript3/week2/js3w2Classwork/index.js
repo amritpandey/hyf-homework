@@ -1,13 +1,3 @@
-/* ;(async ()=>{
-  try{
-  const result= await functionName();
-  }catch(error){
-console.log(error);
-  }
-});
-
-()=>{} */
-
 //exercise 1 using async await to fetch yes or no
 
 (async () => {
@@ -39,8 +29,8 @@ promise2
 
 const promise3 = new Promise((resolve, reject) => {
     setTimeout(() => {
-     // resolve('Hello');
-     reject("Making fail by rejecting")
+        // resolve('Hello');
+        reject('Making fail by rejecting');
     }, 4000);
 });
 
@@ -49,92 +39,130 @@ promise3.then((data) => console.log(data)).catch((error) => console.log(error));
 //Exercise 4
 // Create a function that returns a promise,
 function YesNoFail4Seconds() {
-  const rand = Math.floor(Math.random()*3);
-  const promise4 = new Promise((resolve, reject)=>{
-    setTimeout(() => {
-      if (rand===0) {
-        resolve("yes")
-      } else if(rand===1) {
-        resolve("no")
-      }else{
-        reject("Rejected by getting rand=2")
-      }
-    }, 4000);
-    
-  })
-  return promise4;
+    const rand = Math.floor(Math.random() * 3);
+    const promise4 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (rand === 0) {
+                resolve('yes');
+            } else if (rand === 1) {
+                resolve('no');
+            } else {
+                reject('Rejected by getting rand=2');
+            }
+        }, 4000);
+    });
+    return promise4;
 }
 
-/* YesNoFail4Seconds()
-.then((data)=>console.log(`The answer is ${data}`))
-.catch((err)=>console.log(err))
- */
-//Now try consume the YesNoFail4Seconds using async/await
+YesNoFail4Seconds()
+    .then((data) => console.log(`The answer is ${data}`))
+    .catch((err) => console.log(err));
 
-;(async()=>{
-  try {
-    const response= await YesNoFail4Seconds();
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-  }
+//Now try consume the YesNoFail4Seconds using async/await
+(async () => {
+    try {
+        const response = await YesNoFail4Seconds();
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
 })(); // self executing arrow function in async
 
 //Exercise 5 using async await
 
-async function getAstronautsAndMovies(){
-    const astronautsResponse = await fetch("http://api.open-notify.org/astros.json");
-  const astronauts=await astronautsResponse.json();
-  setTimeout(() => {
-  for (const astronaut of astronauts.people) {
-    console.log(astronaut.name);
-  }
-  }, 2000);
- 
-  
- // return astronauts;
- // fetching another api
+async function getAstronautsAndMovies() {
+    try {
+        const astronautsResponse = await fetch(
+            'http://api.open-notify.org/astros.json',
+        );
+        const astronauts = await astronautsResponse.json();
+        const astronautName = await astronauts.people.map(
+            (astronaut) => astronaut.name,
+        );
 
-  const yesNoResponse = await fetch('https://yesno.wtf/api');
-  const yesNoData = await yesNoResponse.json();
-  setTimeout(() => {
-  console.log(yesNoData.answer);
-}, 4000);
- 
+        const yesNoResponse = await fetch(
+            'https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206bcb0ae8d0a4/raw/02d8bc9ec9a73e463b13c44df77a87255def5ab9/movies.json',
+        );
+        const movies = await yesNoResponse.json();
+        const filteredMovies = movies
+            .map((movie) => movie.title)
+            .filter((newMovie) => newMovie.includes('aba'));
+
+        console.log([astronautName, filteredMovies]);
+    } catch (error) {
+        console.log(error);
+    }
 }
-
 getAstronautsAndMovies();
 
-// Exercise 6 Display together both api using aysnc await
+// Exercise 6 Display together both api using async await first method
 
-async function displayBothApiTogether(){
-  try {
-    const astronautsResponse = await fetch("http://api.open-notify.org/astros.json");
-  const astronauts=await astronautsResponse.json();
-  const astronaut = astronauts.people.map((man)=>man.name);
-       
-  const moviesResponse =  await fetch("https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206bcb0ae8d0a4/raw/02d8bc9ec9a73e463b13c44df77a87255def5ab9/movies.json");
+async function displayBothApiTogether() {
+    try {
+        const astronautsResponse = await fetch(
+            'http://api.open-notify.org/astros.json',
+        );
+        const astronauts = await astronautsResponse.json();
+        const astronaut = astronauts.people.map((man) => man.name);
 
-  const movies= await moviesResponse.json();
-  const movie= movies.map((movie)=>movie.title)
+        const moviesResponse = await fetch(
+            'https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206bcb0ae8d0a4/raw/02d8bc9ec9a73e463b13c44df77a87255def5ab9/movies.json',
+        );
 
+        const movies = await moviesResponse.json();
+        const movie = movies
+            .map((movie) => movie.title)
+            .filter((newMovie) => newMovie.includes('aba'));
 
-const values = await Promise.all([astronaut,movie])
-//battery status
+        const values = await Promise.all([astronaut, movie]);
 
-navigator.getBattery().then(function(battery) {
-  console.log("Battery status "+battery.level);
-  // ... and any subsequent updates.
-  battery.onlevelchange = function() {
-    console.log("Battery status "+this.level);
-  };
-});
+        //battery status checking using navigator.getBattery
 
-console.log(values);
-console.log(movie);
-  } catch (error) {
-    console.log(error);
-  }
+        let battery = await navigator.getBattery();
+        const result = await batteryStatus(battery);
+
+        async function batteryStatus(battery) {
+            console.log('battery level: ', battery.level * 100 + ' %');
+
+            // ... and any subsequent updates.
+            battery.onlevelchange = function () {
+                console.log('battery level changed: ', this.level * 100 + ' %');
+            };
+
+            battery.onchargingchange = function () {
+                const batteryStatus = battery.charging
+                    ? 'charging'
+                    : 'not charging';
+                console.log(batteryStatus);
+            };
+
+            battery.ondischargingtimechange = function () {
+                const ondischargingtimechange = battery.dischargingTime / 60;
+                console.log(ondischargingtimechange);
+            };
+        }
+
+        //console.log(result*100 +" %");
+        console.log(movie);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 displayBothApiTogether();
+
+//Another method for solving exercise 6
+(async () => {
+    try {
+        const API1 = 'http://api.open-notify.org/astros.json';
+        const API2 =
+            'https://gist.githubusercontent.com/pankaj28843/08f397fcea7c760a99206bcb0ae8d0a4/raw/02d8bc9ec9a73e463b13c44df77a87255def5ab9/movies.json';
+
+        const fetchApi = await Promise.all([fetch(API1), fetch(API2)]);
+        const fetchJson = fetchApi.map((fetchEach) => fetchEach.json());
+        const output = await Promise.all(fetchJson);
+        console.log(output);
+    } catch (error) {
+        console.log(`${error.code}: ${error}`);
+    }
+})();
