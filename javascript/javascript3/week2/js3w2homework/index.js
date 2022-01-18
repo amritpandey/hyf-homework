@@ -64,38 +64,47 @@ function setTimeoutPromise(value){
   })
 }
 
-setTimeoutPromise(3000).then(() => {
-  console.log("Called after 3 seconds");
-});
- 
-  function getCurrentLocation() {
-    return new Promise((success, error) => {
-        navigator.geolocation.getCurrentPosition(success,error);
-        function success(pos) {
-          let crd = pos.coords;
-          let lat = crd.latitude;
-          let lon = crd.longitude;
-          console.log('Your current position is:');
-          console.log(`Latitude : ${crd.latitude}`);
-          console.log(`Longitude: ${crd.longitude}`);
-          console.log(`More or less ${crd.accuracy} meters.`); 
-          //return [lat,lon];
-        }
-        
-        function error(err) {
-          console.warn(`ERROR(${err.code}): ${err.message}`);
-        }
-    });
-  }
+setTimeoutPromise(3000).then((data) => {
+  console.log(data+ "Called after a3 seconds");
+}).catch((error)=>{
+  console.log(error);
+})
+
+// geo location
+function getCurrentLocation() {
+  if (navigator.geolocation) {
+    return new Promise(
+      (resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject)
+    )
+  } 
+}
   
+
 getCurrentLocation()
   .then((position) => {
       // called when the users position is found
-      console.log(position);
+      const lat=position.coords.latitude;
+      const lon=position.coords.longitude;
+      console.log(`Current Location found at these coordinates: Latitude:${lat}, Longitude:${lon} `);
   })
   .catch((error) => {
       // called if there was an error getting the users location
-      console.log(error);
+      let msg = null;
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+            msg = "User denied the request for Geolocation.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            msg = "Location information is unavailable.";
+            break;
+        case error.TIMEOUT:
+            msg = "The request to get user location timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            msg = "An unknown error occurred.";
+            break;
+      }
+      console.log(msg);
   });
 
   // Fetching and waiting
