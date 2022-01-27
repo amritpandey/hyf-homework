@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <script>
+            class User {
+                constructor(firstName, lastName) {
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                }
+                getFullName() {
+                    const fullName = this.firstName + ' ' + this.lastName;
+                    return fullName;
+                }
+            }
+
+            const c1 = new User('Amrit', 'Pandey');
+            console.log(c1);
+            console.log(c1.firstName);
+            console.log(c1.getFullName());
+
+            // creating a cv class
+            class Job {
+                constructor(id, title, description, startDate, endDate) {
+                    this.id = id;
+                    this.title = title;
+                    this.description = description;
+                    this.startDate = startDate;
+                    this.endDate = endDate;
+                }
+            }
+            class Education {
+                constructor(id, title, school, address, startDate, endDate) {
+                    this.id = id;
+                    this.title = title;
+                    this.school = school;
+                    this.address = address;
+                    this.startDate = startDate;
+                    this.endDate = endDate;
+                }
+            }
+            class PersonalDetail {
+                constructor(name, dob, portfolio, linkedIn, github) {
+                    this.name = name;
+                    this.dob = dob;
+                    this.portfolio = portfolio;
+                    this.linkedIn = linkedIn;
+                    this.github = github;
+                }
+                getPersonalDetail() {
+                    return `FullName: ${this.name}
+                            Date of Birth: ${this.dob}
+                            Portfolio: ${this.portfolio}
+                            LinkedIn: ${this.linkedIn}
+                            Github: ${this.github}`;
+                }
+            }
+
+            class CV {
+                constructor(email) {
+                    this.jobs = [];
+                    this.educations = [];
+                    this.info = [];
+                    //this.email = ?
+                }
+
+                addJob(job) {
+                    // add functionality here
+                    this.jobs.push(job);
+                }
+
+                removeJob(job) {
+                    // add functionality here
+
+                    const jobTitle = this.jobs
+                        .map((item) => item.title)
+                        .indexOf(job);
+
+                    this.jobs.splice(jobTitle, 1);
+                }
+
+                addEducation(education) {
+                    // add functionality here
+                    this.educations.push(education);
+                }
+
+                removeEducation(education) {
+                    // add functionality here
+                    const educationTitle = this.educations
+                        .map((item) => item.title)
+                        .indexOf(education);
+
+                    this.educations.splice(educationTitle, 1);
+                }
+                addPersonalInfo(detail) {
+                    this.info.push(detail);
+                }
+
+                renderCV() {
+                    const divMain = document.createElement('div');
+                    divMain.classList.add('main-div');
+                    const div1 = document.createElement('div');
+                    div1.innerHTML = 'Personal CV';
+                    div1.classList.add('personal-cv');
+                    divMain.appendChild(div1);
+
+                    //name.innerHTML = c1.getFullName();
+
+                    for (const item of this.info) {
+                        const name = document.createElement('div');
+                        name.innerHTML = `FullName: <em>${item.name}</em><br>
+                            Date of Birth:<em> ${item.dob}</em><br>
+                            Portfolio:<em> ${item.portfolio}</em><br>
+                            LinkedIn:<em> ${item.linkedIn}</em><br>
+                            Github:<em> ${item.github}</em>`;
+                        name.classList.add('full-name');
+                        divMain.appendChild(name);
+                    }
+
+                    const data = document.createElement('ul');
+                    data.innerHTML = 'EXPERIENCE';
+                    data.style.background = 'black';
+                    data.classList.add('exp-ul');
+                    for (const job of this.jobs) {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<em>${job.title} => ${job.description}</em>`;
+
+                        data.appendChild(li);
+                    }
+                    divMain.appendChild(data);
+
+                    const data1 = document.createElement('ul');
+                    data1.innerHTML = 'EDUCATIONS';
+                    data1.classList.add('edu-ul');
+                    for (const education of this.educations) {
+                        const li1 = document.createElement('li');
+                        li1.innerHTML = education.title;
+                        data1.appendChild(li1);
+                    }
+
+                    divMain.appendChild(data1);
+                    document.body.appendChild(divMain);
+                }
+            }
+
+            const cv = new CV();
+            const detail = new PersonalDetail(
+                'Amrit Pandey',
+                2017,
+                'www.amritpandey/portfolio.com',
+                'linkedIn/amritpandey',
+                'github.com/amritpandey',
+            );
+            cv.addPersonalInfo(detail);
+            const job = new Job(
+                1,
+                'developer',
+                'software development in KMD Group Denmark',
+                'May 2021',
+                'till now',
+            );
+            const job1 = new Job(
+                2,
+                'designer',
+                'designer in KK.DK Group Denmark',
+                'March 2021',
+                'till now',
+            );
+            const job2 = new Job(
+                3,
+                'tester',
+                'testing automatically KK.DK Group Denmark',
+                'January 2021',
+                'December 2021',
+            );
+            cv.addJob(job);
+            cv.addJob(job1);
+            cv.addJob(job2);
+            //cv.removeJob('designer');
+
+            const education = new Education(
+                1,
+                'Master',
+                'HYF',
+                'Ringertoften 18, 2400',
+                'January 2021',
+                'December 2021',
+            );
+            const education1 = new Education(
+                2,
+                'Bachelor',
+                'ITC',
+                'Gandovvej 18, 2800',
+                'January 2021',
+                'December 2021',
+            );
+            const education2 = new Education(
+                3,
+                'Intermediate',
+                'DTU',
+                'rodovervej 122, 2800',
+                'October 2021',
+                'December 2021',
+            );
+            cv.addEducation(education);
+            cv.addEducation(education1);
+            cv.addEducation(education2);
+            //cv.removeEducation('Bachelor');
+            //console.log(cv);
+            cv.renderCV();
+        </script>
+    </body>
+</html>
