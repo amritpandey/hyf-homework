@@ -1,0 +1,37 @@
+body {
+    width: 980px;
+    margin: 0 auto;
+}
+header {
+    margin-top: 2em;
+    padding: 1em;
+    background-color: darkseagreen;
+    text-align: center;
+}
+main {
+    max-width: 500px;
+    margin: 2em 1em;
+    display: flex;
+    justify-content: space-around;
+    background-color: dimgray;
+    color: white;
+}
+.search-item {
+    margin-left: 5em;
+    border-radius: 25px;
+    border: 2px solid #609;
+    padding: 20px;
+    width: 200px;
+    height: 15px;
+    font-size: 1em;
+}
+
+footer {
+    background-color: lightslategray;
+    padding: 2em;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
