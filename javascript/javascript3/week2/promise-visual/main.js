@@ -40,25 +40,41 @@ function translateOneByOne() {
 
 //translateOneByOne();
 
+// new added way to solve translate all at once
+/* function translateAllAtOnce() {
+    return new Promise((resolve)=>resolve("All boxes moved at the same time"));     
+  }
+translateAllAtOnce()
+.then((data)=>{
+  moveElement(li1, { x: 20, y: 300 });
+  moveElement(li2, { x: 400, y: 300 });
+  moveElement(li3, { x: 400, y: 20 });
+  console.log(data);
+  
+}).catch((e)=>console.log(e)); */
+
 function translateAllAtOnce() {
-    const promise1 = moveElement(li1, { x: 20, y: 300 }).then(() => {
-        console.log('first promise');
-    });
-    const promise2 = moveElement(li2, { x: 400, y: 300 }).then(() => {
-        console.log('second promise');
-    });
-    const promise3 = moveElement(li3, { x: 400, y: 20 }).then(() => {
-        console.log('third promise');
-    });
+  const promise1 = moveElement(li1, { x: 20, y: 300 }).then(() => {
+      console.log('first promise');
 
-    Promise.all([promise1, promise2, promise3]).then((values) => {
-        console.log(values);
-    });
+  });
+  const promise2 = moveElement(li2, { x: 400, y: 300 }).then(() => {
+      console.log('second promise');
+  });
+  const promise3 = moveElement(li3, { x: 400, y: 20 }).then(() => {
+      console.log('third promise');
+  });
 
-    //this code is working but i am unable to put thumbsUp function, need to ask
+  Promise.all([promise1, promise2, promise3]).then(() => {
+    //console.log(values);
+    displayThumbsUp();
+  });
+
+  //this code is working but i am unable to put thumbsUp function, need to ask
 }
 
 //translateAllAtOnce()
+
 
 //using async await
 async function translateOneByOneAsync() {
@@ -73,6 +89,7 @@ async function translateOneByOneAsync() {
         console.log('Green element has been moved');
 
         displayThumbsUp();
+       
     } catch (error) {
         console.log(error);
     }
@@ -100,7 +117,7 @@ async function translateAllAtOnceAsync() {
     }
 }
 
-translateAllAtOnceAsync()
+//translateAllAtOnceAsync()
 
 //using arrow function
 /* ;(async ()=> {
