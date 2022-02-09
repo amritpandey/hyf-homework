@@ -1,69 +1,69 @@
 -- class exercises
--- 1. Select the names and phones of all users;
-select
+-- 1. SELECT the names and phones of all users;
+SELECT
   name,
   phone
-from
+FROM
   user;
--- 2. Select the name of the user with id=11;
-select
+-- 2. SELECT the name of the user with id=11;
+SELECT
   name
-from
+FROM
   user
-where
+WHERE
   user.id = 11;
---3. Find how many users exist in the database
-select
+-- 3. Find how many users exist in the database
+SELECT
   COUNT(id)
-from
+FROM
   user;
---4. Select the names of the first 5 users in the database
-select
+-- 4. SELECT the names of the first 5 users in the database
+SELECT
   name
-from
+FROM
   user
 LIMIT
   5;
---5. Select the names of the last 3 users in the database;
-select
+-- 5. SELECT the names of the last 3 users in the database;
+SELECT
   id,
   name
-from
+FROM
   user
 ORDER BY
   id DESC
 LIMIT
   3;
 -- 6 Sum all the ids in the user table
-select
+SELECT
   SUM(id) AS "Total ID"
-from
+FROM
   user;
---7.Select all users and order them alphabetically by name;
-select
+-- 7.SELECT all users and order them alphabetically by name;
+SELECT
   name
-from
+FROM
   user
 ORDER BY
   name asc;
---8 Find all tasks that include SQL either on the title or on the description;
-select
+-- 8 Find all tasks that include SQL either on the title or on the description;
+SELECT
   title,
   description
-from
+FROM
   task
-where
-  title like "%sql%"
-  or description like "%sql";
---9 Find the title of all tasks that the user Maryrose is responsible for;
+WHERE
+  title LIKE "%sql%"
+  OR description like "%sql";
+-- 9 Find the title of all tasks that the user Maryrose is responsible for;
 SELECT
   task.title
-from
+FROM
   task
-  INNER JOIN user on task.user_id = user.id
+  INNER JOIN user ON task.user_id = user.id
 WHERE
-  user.name like "%Maryrose%";
---10 Find how many tasks each user is responsible for;
+  user.name LIKE "%Maryrose%";
+-- 10 Find how many tasks each user is responsible for;
 SELECT
   user.name,
   COUNT(task.id) AS "Total Task"
@@ -74,16 +74,16 @@ GROUP BY
   user.id;
 -- 11. Find how many tasks with a status=Done each user is responsible for;
 SELECT
-  user.name as Username,
-  status.name as Status,
-  COUNT(task.id) as Total
+  user.name AS Username,
+  status.name AS Status,
+  COUNT(task.id) AS Total
 FROM
   (
     user
-    JOIN task on task.user_id = user.id
+    JOIN task ON task.user_id = user.id
   )
-  JOIN status on task.status_id = status.id
-where
+  JOIN status ON task.status_id = status.id
+WHERE
   status.name = "Done"
 GROUP BY
   user.id;

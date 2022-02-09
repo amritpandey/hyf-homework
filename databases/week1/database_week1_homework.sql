@@ -1,5 +1,5 @@
---db week1 hw
---1. Find out how many tasks are in the task table
+-- db week1 hw
+-- 1. Find out how many tasks are in the task table
 SELECT
   COUNT(id) as "Total tasks"
 FROM
@@ -20,7 +20,7 @@ FROM
   JOIN status ON task.status_id = status.id
 WHERE
   status.name = "Done";
---4. Find all the tasks that are not marked as done
+-- 4. Find all the tasks that are not marked as done
 SELECT
   task.title AS Task,
   status.name AS Status
@@ -29,11 +29,11 @@ FROM
   JOIN status on task.status_id = status.id
 WHERE
   status.name != "Done";
---5. Get all the tasks, sorted with the most recently created first
+-- 5. Get all the tasks, sorted with the most recently created first
 SELECT
   title AS Tasks,
   created AS "Created Date"
-from
+FROM
   task
 ORDER BY
   created DESC;
@@ -41,7 +41,7 @@ ORDER BY
 SELECT
   title AS Tasks,
   created AS "Created Date"
-from
+FROM
   task
 ORDER BY
   created DESC
@@ -74,7 +74,7 @@ GROUP BY
   status.name;
 -- 10. Get the names of all statuses, sorted by the status with most tasks first
 SELECT
-  status.name as "Status",
+  status.name AS "Status",
   COUNT(task.id) AS "Total Task"
 FROM
   task
