@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    justify-content: right;
+}
+.main-div {
+    background-color: rgb(96, 93, 99);
+    max-width: 500px;
+    color: white;
+    padding: 2em;
+    margin: 2em;
+    width: 100%;
+    border-radius: 20px;
+}
+.personal-cv {
+    font-size: 2rem;
+    text-align: center;
+    background: rgb(60, 99, 99);
+    margin-bottom: 1em;
+}
+
+.full-name {
+    font-size: 1.5em;
+    color: rgb(199, 199, 228);
+}
+.exp-ul {
+    font-weight: bold;
+    background: darkred;
+    padding: 2em;
+}
+
+.edu-ul {
+    font-weight: bold;
+    background: forestgreen;
+    padding: 2em;
+}
