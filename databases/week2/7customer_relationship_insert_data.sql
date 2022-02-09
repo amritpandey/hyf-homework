@@ -1,6 +1,6 @@
-insert into
+INSERT INTO
   customer (name, email, phone, city)
-values
+VALUES
   (
     'suman ghimire',
     'suman0@harvard.edu',
@@ -14,25 +14,25 @@ values
     'lyngby'
   );
 -- Statuses
-insert into
+INSERT INTO
   status (id, name)
-values
+VALUES
   (1, 'Not started');
-insert into
+INSERT INTO
   status (id, name)
-values
+VALUES
   (2, 'In progress');
-insert into
+INSERT INTO
   status (id, name)
-values
+VALUES
   (3, 'Done');
 INSERT INTO
   product(name, description, price)
 VALUES
   ('tv', 'smart lcd tv', 5000),('mobile', 'iphone 12', 8000),('watch', 'smart watch', 2000);
-insert into
+INSERT INTO
   `order`(`order_date`, `customer_id`, `status_id`)
-values
+VALUES
   ('2021-10-25 06:23:16', 1, 2),('2022-01-25 07:54:16', 2, 1);
 INSERT INTO
   order_product(order_id, product_id)
@@ -42,14 +42,14 @@ VALUES
 SELECT
   COUNT(product.id),
   customer.name
-from
+FROM
   product
   JOIN order_product ON order_product.product_id = product.id
   JOIN `order` ON order.id = order_product.order_id
   JOIN customer ON customer.id = order.customer_id
   JOIN status ON status.id = order.status_id
 WHERE
-  customer.name not like "%suman%"
+  customer.name NOT LIKE "%suman%"
   AND status.name != "Done "
 GROUP BY
   customer.name;

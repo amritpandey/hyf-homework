@@ -1,5 +1,5 @@
---db week2 hw
---Add a task with these attributes: title, description, created, updated, due_date, status_id, user_id
+-- db week2 hw
+-- Add a task with these attributes: title, description, created, updated, due_date, status_id, user_id
 SELECT
   *
 FROM
@@ -23,14 +23,14 @@ VALUES(
     2,
     1
   );
---Change the title of a task
+-- Change the title of a task
 UPDATE
   task
 SET
   title = "No need to prepare"
 WHERE
   id = 36;
---Change a task due date
+-- Change a task due date
 UPDATE
   task
 SET
@@ -44,14 +44,14 @@ SET
   status_id = 1
 WHERE
   id = 36;
---Mark a task as complete
+-- Mark a task as complete
 UPDATE
   task
 SET
   status_id = 3
 WHERE
   id = 36;
---Delete a task */
+-- Delete a task */
 DELETE FROM
   task
 WHERE

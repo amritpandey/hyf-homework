@@ -1,12 +1,12 @@
-use School;
+USE School;
 CREATE TABLE `Class` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255) NOT NULL,
   `begin_date` DATETIME NOT NULL,
   `ends_date` DATETIME NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 CREATE TABLE `Student` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `phone` VARCHAR(15),
@@ -15,8 +15,8 @@ CREATE TABLE `Student` (
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 /* Indexes are used to find rows with specific column values quickly. Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs */
 CREATE INDEX student_name ON Student (name);
---Add a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).
-alter table
+-- Add a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).
+ALTER TABLE
   Class
-Add
+ADD
   status ENUM('not-started', 'ongoing', 'finished');

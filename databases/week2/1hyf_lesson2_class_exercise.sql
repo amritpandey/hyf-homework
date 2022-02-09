@@ -3,14 +3,12 @@ SELECT
   task.title,
   user.name
 FROM
-  (
-    task
-    join user_task ON task.id = user_task.task_id
-  )
-  join user ON user.id = user_task.user_id
+  task
+  JOIN user_task ON task.id = user_task.task_id
+  JOIN user ON user.id = user_task.user_id
 WHERE
   user.name = "Pavel Brushneen";
---Find how many tasks each user is responsible for;
+-- Find how many tasks each user is responsible for;
 SELECT
   COUNT(task.id),
   user.name
@@ -22,11 +20,11 @@ FROM
   JOIN user ON user.id = user_task.user_id
 GROUP BY
   user.name;
---Find how many tasks with a status=Done each user is responsible for;
+-- Find how many tasks with a status=Done each user is responsible for;
 SELECT
-  count(task.id) as 'Total Task',
-  user.name as User,
-  status.name as Status
+  count(task.id) AS 'Total Task',
+  user.name AS User,
+  status.name AS Status
 FROM
   status
   JOIN task ON status.id = task.status_id
