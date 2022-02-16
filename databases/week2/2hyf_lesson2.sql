@@ -1,3 +1,4 @@
+USE hyf_lesson2;
 -- db week2 hw
 -- Add a task with these attributes: title, description, created, updated, due_date, status_id, user_id
 SELECT

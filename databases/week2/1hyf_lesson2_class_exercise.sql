@@ -1,3 +1,5 @@
+CREATE DATABASE hyf_lesson2;
+USE hyf_lesson2;
 -- Get all the tasks assigned to Pavel;
 SELECT
   task.title,

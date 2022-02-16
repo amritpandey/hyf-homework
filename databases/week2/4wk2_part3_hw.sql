@@ -2,7 +2,8 @@ USE hyf_lesson2;
 -- Get all the tasks assigned to users whose email ends in @spotify.com
 SELECT
   task.title,
-  user.email
+  user.email,
+  user.name
 FROM
   task
   INNER JOIN user_task ON user_task.task_id = task.id
@@ -12,7 +13,7 @@ WHERE
 -- Get all the tasks for 'Donald Duck' with status 'Not started'
 SELECT
   task.title,
-  user.name
+  user.name,
 FROM
   user
   JOIN user_task ON user_task.user_id = user.id
@@ -24,7 +25,8 @@ WHERE
 -- Get all the tasks for 'Maryrose Meadows' that were created in september (hint: month(created)=month_number)
 SELECT
   task.title,
-  task.created
+  task.created,
+  user.name
 FROM
   task
   INNER JOIN user_task ON user_task.task_id = task.id
