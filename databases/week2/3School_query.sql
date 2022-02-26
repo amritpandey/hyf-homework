@@ -12,7 +12,9 @@ CREATE TABLE `Student` (
   `email` VARCHAR(255) NOT NULL,
   `phone` VARCHAR(15),
   `class_id` INT(10) UNSIGNED,
-  CONSTRAINT `fk_Class` FOREIGN KEY (`class_id`) REFERENCES `Class` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_Class` FOREIGN KEY (`class_id`) REFERENCES `Class` (`id`) ON DELETE
+  SET
+    NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 /* Indexes are used to find rows with specific column values quickly. Without an index, MySQL must begin with the first row and then read through the entire table to find the relevant rows. The larger the table, the more this costs */
 CREATE INDEX `student_name` ON Student (name);
