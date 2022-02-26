@@ -9,7 +9,9 @@ CREATE TABLE `Reservation` (
   `contact_email` VARCHAR(50),
   `meal_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_Meal` FOREIGN KEY (`meal_id`) REFERENCES `Meal` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_Meal` FOREIGN KEY (`meal_id`) REFERENCES `Meal` (`id`) ON DELETE
+  SET
+    NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 CREATE Table Meal(
   id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -30,5 +32,7 @@ CREATE TABLE `Review` (
   `created_date` DATE,
   `meal_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`meal_id`) REFERENCES `Meal` (`id`) ON DELETE CASCADE
+  FOREIGN KEY (`meal_id`) REFERENCES `Meal` (`id`) ON DELETE
+  SET
+    NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

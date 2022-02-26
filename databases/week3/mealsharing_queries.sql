@@ -8,6 +8,7 @@ from
 -- Add a new meal
 INSERT INTO
   Meal(
+    `id`,
     `title`,
     `description`,
     `location`,
@@ -17,12 +18,13 @@ INSERT INTO
     `created_date`
   )
 VALUES(
-    'Rød grød med fløde',
-    'lakkert mad alle skal elske',
+    3,
+    'burger2',
+    'lakkert mad alle burger elske',
     'sundby',
     '2021-10-25 06:54:16',
     15,
-    179.00,
+    122.00,
     '2021-10-26 06:54:16'
   );
 -- Get a meal with any id,
@@ -210,3 +212,7 @@ GROUP BY
   Meal.id
 ORDER BY
   Average;
+DELETE FROM
+  Meal
+WHERE
+  id = 1;
