@@ -1,0 +1,7 @@
+.DS_Store
+/node_modules
+../../week1/homework
+../../week1/package-lock.json
+../../week2/homework/
+.package-lock.json
+.package.json
