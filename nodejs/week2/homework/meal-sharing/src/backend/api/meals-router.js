@@ -5,7 +5,7 @@ const meals = require('./../data/meals.json');
 
 router.get('/', async (request, response) => {
     try {
-        let result;
+        let result = meals;
         if ('title' in request.query) {
             const title = request.query.title;
             const getTitle = meals.find((meal) =>
@@ -21,19 +21,14 @@ router.get('/', async (request, response) => {
             );
             result = lessThanMaxPrice;
         }
-
         if ('createdAfter' in request.query) {
-            const createdAfter = new Date(request.query.createdAfter);
-            const d1 = createdAfter.getTime();
+          const createdAfter = new Date(request.query.createdAfter);
+          console.log(createdAfter);
 
-            const createdAfterDate = meals.filter((meal) => {
-                const availableDate = new Date(meal.createdAt);
-                const d2 = availableDate.getTime();
-                return d1 < d2;
-            });
-            result = createdAfterDate;
-        }
-
+          const createdAfterDate = meals.filter((meal) =>new Date(meal.createdAt)>createdAfter);
+          result = createdAfterDate;
+      }
+     
         if ('limit' in request.query) {
             const limit = Number(request.query.limit);
             if (meals.length >= 1) {
@@ -43,24 +38,13 @@ router.get('/', async (request, response) => {
                 result = 'No data found';
             }
         }
-        response.send(result);
+        response.json(result);
     } catch (error) {
         throw error;
     }
 });
 
-// /api/meals/
-/* router.get('/', async (request, response) => {
-    try {
-        const allMeal = meals.map((meal) => meal);
-        response.send(allMeal);
-    } catch (error) {
-        throw error;
-    }
-}); */
-
 // /api/meals/{id}
-
 router.get('/:id', async (request, response) => {
     try {
         const id = Number(request.params.id);
@@ -74,6 +58,5 @@ router.get('/:id', async (request, response) => {
         throw error;
     }
 });
-
 
 module.exports = router;
