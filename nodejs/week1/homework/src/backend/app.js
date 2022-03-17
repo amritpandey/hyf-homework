@@ -19,39 +19,40 @@ async function sendGreeting(request, response) {
 }
 
 async function listMeals(request, response) {
-    response.json(getMapAndFilter(meals));
+    response.json(joinMealsWithReviews(meals));
 }
 
-function getMapAndFilter(param) {
-  const mealWithReview = param.map(meal => {
-    const reviewOfEachMeal = reviews.filter(review => review.mealId === meal.id)
-    return {
-      ...meal,
-      reviews: reviewOfEachMeal
-    }
-  })
-  return mealWithReview
-};
+function joinMealsWithReviews(meals) {
+    const mealWithReview = meals.map((meal) => {
+        const reviewOfEachMeal = reviews.filter(
+            (review) => review.mealId === meal.id,
+        );
+        return {
+            ...meal,
+            reviews: reviewOfEachMeal,
+        };
+    });
+    return mealWithReview;
+}
 
 async function cheapMealsList(request, response) {
-     const allCheapMeals = meals
-        .filter((meal) => meal.price < 80)
-    response.json(getMapAndFilter(allCheapMeals));
+    const allCheapMeals = meals.filter((meal) => meal.price < 80);
+    response.json(joinMealsWithReviews(allCheapMeals));
 }
 
 async function largeMealsList(request, response) {
-    const largeMeals = meals
-        .filter((meal) => meal.maxNumberOfGuests > 20)
-        
-    response.json(getMapAndFilter(largeMeals));
+    const largeMeals = meals.filter((meal) => meal.maxNumberOfGuests > 20);
+
+    response.json(joinMealsWithReviews(largeMeals));
 }
 
 async function listMeal(request, response) {
-    let randomMeal = meals[randomValue(meals)]; 
-    const reviewOfRandMeal = meals
-        .filter((meal) => meal.id === randomMeal.id);
-       
-    response.json(getMapAndFilter(reviewOfRandMeal));
+    let randomMeal = meals[randomValue(meals.length)];
+    /* const reviewOfRandMeal = meals
+        .filter((meal) => meal.id === randomMeal.id); */
+    const mealsWithReviews = joinMealsWithReviews([randomMeal]);
+
+    response.json(joinMealsWithReviews(mealsWithReviews));
 }
 
 async function listReservations(request, response) {
@@ -59,12 +60,13 @@ async function listReservations(request, response) {
 }
 
 function randomValue(upperLimit) {
-    const random = Math.round(Math.random() * upperLimit.length);
+    const random = Math.round(Math.random() * upperLimit);
     return random;
 }
+randomValue(3);
 
 async function listReservation(request, response) {
-    const randomIndex = reservations[randomValue(reservations)];
+    const randomIndex = reservations[randomValue(reservations.length)];
     response.json(randomIndex);
 }
 
