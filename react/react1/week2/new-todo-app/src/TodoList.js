@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import TodoArray from './TodoArray';
+import { TodoItem } from './TodoItem';
 
 const todo = TodoArray();
 
@@ -41,6 +42,17 @@ export function TodoList() {
         setTodosState(newTodoItems);
     };
 
+    const handleDelete = (id) => {
+        if (todosState.length === 1) {
+            console.log('No items');
+        }
+        setTodosState((prevValue) =>
+            prevValue.filter((removeTodo) => {
+                return removeTodo.id !== id;
+            }),
+        );
+    };
+
     const todoItems = todosState.map((todo) => (
         <TodoItem
             id={todo.id}
@@ -48,6 +60,7 @@ export function TodoList() {
             checked={todo.checked}
             key={todo.id}
             handleChange={handleChangeCheckbox}
+            handleDelete={handleDelete}
         ></TodoItem>
     ));
 
@@ -66,43 +79,4 @@ export function TodoList() {
             <button onClick={addTodo}>Add todo</button>
         </div>
     );
-
-    function TodoItem(props) {
-        const { id, description, checked, handleChange } = props;
-
-        const handleCheckboxChangeControl = () => {
-            if (checked) return null;
-            handleChange(id);
-        };
-
-        const handleDelete = (id) => {
-            if (todosState.length === 1) {
-                console.log('No items');
-            }
-            setTodosState((prevValue) =>
-                prevValue.filter((removeTodo) => {
-                    return removeTodo.id !== id;
-                }),
-            );
-        };
-
-        return (
-            <div>
-                <input
-                    type="checkbox"
-                    checked={checked}
-                    className={'line'}
-                    onChange={() => handleCheckboxChangeControl()}
-                />
-                <span className={checked ? 'strike' : null}>{description}</span>
-                <button
-                    type="button"
-                    className={'line'}
-                    onClick={() => handleDelete(id)}
-                >
-                    Delete
-                </button>
-            </div>
-        );
-    }
 }
