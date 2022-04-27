@@ -40,3 +40,6 @@ color: blueviolet;
     transform: rotate(360deg);
   }
 }
+.no-items{
+  color: red;
+}

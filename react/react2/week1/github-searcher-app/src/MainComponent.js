@@ -25,6 +25,7 @@ export const MainComponent = () => {
             return res.json();
           }
           setErrMessage("Error fetching! Error code: " + res.status);
+          setLoading(false);
           return;
         })
         .then((data) => {

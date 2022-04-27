@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { FetchedContext } from "./MainComponent";
+import "./App.css";
 
 export const DisplaySearchResult = () => {
   const getData = useContext(FetchedContext);
-  const newUser = getData.queryResult.map((item) => <div>{item}</div>);
+  const newUser = getData.queryResult.map((item,index) => <div key={index}>{item}</div>);
   return (
     <div>
       {getData.input.length === 0 && (
-        <div style={{ color: "red" }}>{"No items"}</div>
+        <div className="no-items" >{"No items"}</div>
       )}
 
       {/* {getData.errMessage && <div>{getData.errMessage}</div>} */}
